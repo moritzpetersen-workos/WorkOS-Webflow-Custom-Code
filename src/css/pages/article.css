@@ -1,0 +1,116 @@
+.article-container .section-heading {
+  text-wrap: balance;
+}
+pre[class*="language-"] {
+  margin-bottom: 32px;
+}
+.multiple-authors-wrap:hover .blog-author {
+  margin-right: 8px;
+}
+.toc-link.w--current .toc-link-dot {
+  opacity: 100%;
+}
+@media only screen and (max-width: 1250px) {
+  .post-toc-wrap {
+    display: none;
+  }
+}
+
+.article-content-section {
+  scroll-margin-top: 64px;
+}
+
+.toc-item.active > a {
+  color: var(--black);
+}
+
+.post-toc-wrap {
+  --toc-transition-duration: 0.25s;
+  --toc-line-width: 16px;
+  --toc-line-height: 2px;
+  --toc-line-color: #d1d3da;
+  --toc-line-color-active: var(--black);
+  transition: transform var(--toc-transition-duration) ease;
+}
+.post-toc-inner {
+  transition: transform var(--toc-transition-duration) ease;
+}
+/* Collapsed state 
+.post-toc-inner.toc-collapsed {
+  transform: translateY(calc(50vh - 50%));
+}*/
+
+.toc-a {
+  position: relative;
+  transition: color var(--toc-transition-duration) ease;
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  transition: all var(--toc-transition-duration) ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+/* Line behind text that's always present but scaled to 0 by default */
+.toc-a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(50% - var(--toc-line-height) / 2);
+  opacity: 0;
+  width: var(--toc-line-width);
+  height: var(--toc-line-height);
+  background-color: var(--toc-line-color);
+  border-radius: var(--toc-line-height);
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform var(--toc-transition-duration) ease,
+    opacity var(--toc-transition-duration) ease,
+    background-color var(--toc-transition-duration) ease;
+}
+
+/* Collapsed state styles */
+.toc-collapsed .toc-a {
+  color: transparent;
+  height: 4px;
+  transform: scale(1);
+  transform-origin: left;
+}
+.toc-collapsed .toc-item.active .toc-a {
+  color: transparent;
+}
+
+.toc-collapsed .toc-a::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Active link styles */
+.toc-collapsed .toc-item.active > .toc-a::before {
+  background-color: var(--toc-line-color-active);
+  transform: scaleX(1.4);
+}
+
+/* Hover state */
+.toc-collapsed:hover .toc-a {
+  color: inherit;
+  height: var(--expanded-link-height);
+  transform: scale(1);
+}
+
+.toc-collapsed:hover .toc-a::before {
+  transform: scaleX(1);
+  opacity: 0;
+}
+.toc-collapsed:hover .toc-item.active > .toc-a {
+  color: var(--black);
+}
+
+/* Optional: Add subtle background on hover 
+.toc-collapsed:hover {
+  background: var(--color-bg-subtle, rgba(0, 0, 0, 0.02));
+  border-radius: 8px;
+  padding: 1rem;
+}*/
