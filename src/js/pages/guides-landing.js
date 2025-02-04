@@ -9,6 +9,7 @@ class BookModal {
 
     this.modalsWrapper = document.querySelector(".guides-modals");
     this.modalBg = document.querySelector(".guides-modal-bg");
+    this.closeBg = document.querySelector(".guides-modal-close-bg");
     this.modalsList = document.querySelector(".guides-modals-list");
     this.modals = document.querySelectorAll(".guides-modal");
 
@@ -111,6 +112,7 @@ class BookModal {
     });
 
     this.modalBg.addEventListener("click", () => this.close());
+    this.closeBg.addEventListener("click", () => this.close());
 
     // Keyboard navigation
     document.addEventListener("keydown", (e) => {
